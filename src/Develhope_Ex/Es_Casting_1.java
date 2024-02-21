@@ -6,5 +6,6 @@ public class Es_Casting_1 {
         double SecondNumb = 29d;
 
         System.out.println((int)FirstNumb + (int) SecondNumb);
+
     }
 }
