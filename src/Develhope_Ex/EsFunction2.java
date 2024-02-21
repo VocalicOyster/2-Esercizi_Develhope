@@ -8,5 +8,6 @@ public class EsFunction2 {
 
     public static int StringLength(String txt) {
         return txt.length();
+
     }
 }
