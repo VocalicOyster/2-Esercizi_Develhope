@@ -1,3 +1,5 @@
+package Develhope_Ex;
+
 public class EsAritmOperator1 {
     public static void main(String[] args) {
         System.out.println(Mod(11, 6));
