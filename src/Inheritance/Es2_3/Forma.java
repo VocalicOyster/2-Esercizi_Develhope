@@ -1,4 +1,4 @@
-package Inheritance.Es2;
+package Inheritance.Es2_3;
 
 public  class Forma {
     public void calcolaArea() {
