@@ -1,4 +1,4 @@
-package Inheritance.Es1;
+package Develhope_Ex.Inheritance.Es1;
 
 public class Animals {
     public void faIlVerso() {

@@ -1,4 +1,4 @@
-package Inheritance.Es2_3;
+package Develhope_Ex.Inheritance.Es2_3;
 
 public class Triangle extends Forma {
     int base = 10;

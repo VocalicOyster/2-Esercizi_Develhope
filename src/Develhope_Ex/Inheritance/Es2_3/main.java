@@ -1,4 +1,4 @@
-package Inheritance.Es2_3;
+package Develhope_Ex.Inheritance.Es2_3;
 
 public class main {
     public static void main(String[] args) {
