@@ -10,6 +10,5 @@ public class Es_Offset3 {
         System.out.println(data.getMonth());
         System.out.println(data.getDayOfMonth());
         System.out.println(data.getDayOfWeek());
-
     }
 }
