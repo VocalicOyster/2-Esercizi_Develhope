@@ -1,4 +1,4 @@
-package Develhope_Ex.Abstract.Es1;
+package Es1;
 
 public class Main {
     public static void main(String[] args) {
