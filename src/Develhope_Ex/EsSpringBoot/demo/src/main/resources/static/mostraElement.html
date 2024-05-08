@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mostra Elementi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .item {
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+        }
+
+        .item:last-child {
+            border-bottom: none;
+        }
+
+        .item h3 {
+            margin-bottom: 5px;
+        }
+
+        .item p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <h1>Mostra Elementi</h1>
+</div>
+
+<div class="content" id="itemsContainer">
+    <!-- Gli elementi verranno inseriti qui -->
+</div>
+
+
+<script>
+    fetch('magazzino.json')
+        .then(response => response.json())
+        .then(data => {
+            const itemsContainer = document.getElementById('itemsContainer');
+
+            data.magazzino.forEach((item, index) => {
+                const itemDiv = document.createElement('div');
+                itemDiv.classList.add('item');
+
+                const itemName = document.createElement('h3');
+                itemName.textContent = `Elemento ${index + 1}`;
+
+                const itemDetails = document.createElement('p');
+                itemDetails.textContent = `ID: ${item.id}, Tipo di Prodotto: ${item.tipoProdotto}, Produttore: ${item.produttore}, Modello: ${item.modello}, Dimensioni Display: ${item.dimensioniDisplay}, Dimensione Memoria: ${item.dimensioneMemoria}, Prezzo Acquisto: ${item.prezzoAcquisto}, Prezzo Vendita: ${item.prezzoVendita}, Quantità: ${item.quantita}, Descrizione: ${item.descrizione}`;
+
+                itemDiv.appendChild(itemName);
+                itemDiv.appendChild(itemDetails);
+                itemsContainer.appendChild(itemDiv);
+            });
+        })
+        .catch(error => {
+            console.error('Errore durante il recupero dei dati JSON:', error);
+        });
+</script>
+</body>
+</html>

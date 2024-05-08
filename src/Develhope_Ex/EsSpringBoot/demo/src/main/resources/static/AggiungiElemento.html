@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aggiunta Elemento al Magazzino</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .content {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+
+        .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+
+        .form-group button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .form-group button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <h1>Aggiunta Elemento al Magazzino</h1>
+</div>
+
+<div class="content">
+    <form action="/api/add-item" method="post">
+        <div class="form-group">
+            <label for="productType">Tipo di Prodotto:</label>
+            <input type="text" id="productType" name="productType" required>
+        </div>
+        <div class="form-group">
+            <label for="model">Modello:</label>
+            <input type="text" id="model" name="model" required>
+        </div>
+        <div class="form-group">
+            <label for="price">Prezzo:</label>
+            <input type="number" id="price" name="price" min="0" step="0.01" required>
+        </div>
+        <div class="form-group">
+            <label for="quantity">Quantità:</label>
+            <input type="number" id="quantity" name="quantity" min="1" required>
+        </div>
+        <div class="form-group">
+            <label for="description">Descrizione:</label>
+            <textarea id="description" name="description" rows="4"></textarea>
+        </div>
+        <button type="submit">Aggiungi Elemento</button>
+    </form>
+</div>
+</body>
+</html>
