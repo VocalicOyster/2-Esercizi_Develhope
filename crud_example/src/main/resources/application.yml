@@ -1,0 +1,13 @@
+spring:
+    application:
+        name: crud_example
+    datasource:
+        url: jdbc:mysql://127.0.0.1:3306/PrimoDB
+        username: root
+        password:
+
+    jpa:
+        database: mysql
+        show_sql: true
+        hibernate:
+            ddl_auto: update
