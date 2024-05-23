@@ -1,4 +1,4 @@
-package co.develhope.userUnitTest.DTOs;
+package models.DTOs;
 
 
 import jakarta.persistence.Column;

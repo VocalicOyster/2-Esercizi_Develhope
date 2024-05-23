@@ -1,12 +1,15 @@
 package co.develhope.userUnitTest.services;
 
 
-import co.develhope.userUnitTest.DTOs.UserDTO;
+import co.develhope.userUnitTest.exceptions.UserException;
+import co.develhope.userUnitTest.utilities.validator.UserValidator;
+import models.DTOs.UserDTO;
 import co.develhope.userUnitTest.entities.UserEntity;
 import co.develhope.userUnitTest.repositories.UserRepo;
-import org.apache.catalina.User;
+import models.Response;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,23 +22,35 @@ public class UserService {
     private UserRepo userRepo;
     @Autowired
     private ModelMapper modelMapper;
-    public UserDTO createUser(UserDTO userDTO) {
-        UserEntity userEntity = modelMapper.map(userDTO, UserEntity.class);
-        UserEntity saved = userRepo.saveAndFlush(userEntity);
-        modelMapper.map(saved, userDTO);
-        return userDTO;
+    @Autowired
+    private UserValidator userValidator;
+
+    public UserDTO createUser(UserDTO userDTO) throws UserException {
+        if(userValidator.userValidator(userDTO)) {
+            UserEntity userEntity = modelMapper.map(userDTO, UserEntity.class);
+            UserEntity saved = userRepo.saveAndFlush(userEntity);
+            modelMapper.map(saved, userDTO);
+            return userDTO;
+        }
+        else  {
+            throw new UserException("Something went wrong with data", 400);
+        }
     }
 
     public List<UserEntity> getAllUser() {
         return userRepo.findAll();
     }
 
-    public UserEntity getUserById(Long id) {
-        Optional<UserEntity> user = userRepo.findById(id);
-        return user.get();
+    public UserEntity getUserById(Long id) throws UserException {
+        Optional<UserEntity> user =  userRepo.findById(id);
+        if(user.isPresent()) {
+            return user.get();
+        }
+        else throw new UserException("ID not present", 400);
+
     }
 
-    public UserEntity upateName(Long id, String name) {
+    public UserEntity upateName(Long id, String name) throws UserException {
         Optional<UserEntity> userEntity = userRepo.findById(id);
         if(userEntity.isPresent()) {
             UserEntity user = userEntity.get();
@@ -44,17 +59,17 @@ public class UserService {
             user = modelMapper.map(userDTO, UserEntity.class);
             return userRepo.saveAndFlush(user);
         }
-        return null;
+       else throw new UserException("ID not found", 400);
     }
 
-    public UserEntity deleteById(Long id) {
+    public UserEntity deleteById(Long id) throws UserException {
         Optional<UserEntity> userEntity = userRepo.findById(id);
         if(userEntity.isPresent()) {
             UserEntity userToDelete = userEntity.get();
             userRepo.deleteById(id);
             return userToDelete;
         }
-        return null;
+        throw new UserException("ID not found", 400);
     }
 
 
