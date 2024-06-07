@@ -1,0 +1,18 @@
+server:
+    port: 5000 # Porta predefinita
+
+spring:
+    profiles:
+        active: prod # Imposta il profilo attivo di default (opzionale)
+
+---
+spring:
+    profiles: prod
+server:
+    port: 4000
+
+---
+spring:
+    profiles: test
+server:
+    port: 7000
