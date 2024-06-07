@@ -1,0 +1,21 @@
+server:
+    port: 5000
+
+
+spring:
+    profiles:
+        active: prod # Imposta il profilo attivo di default (opzionale)
+
+---
+spring:
+    profiles: test
+server:
+    port: 4000
+    welcomeMsg: Hello from Test
+
+---
+spring:
+    profiles: prod
+server:
+    port: 5000
+    welcomeMsg: Hello from Prod
